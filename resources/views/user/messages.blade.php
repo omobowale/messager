@@ -16,7 +16,6 @@
                     <div>
                         <x-user-message-new />
                     </div>
-
                     <div class="overflow-x-auto relative">
                         <table class="table-auto w-100 text-sm text-left text-gray-500 dark:text-gray-400">
                             <x-user-message-table-header col1="Title" col2="Message" col3="Date and Time"

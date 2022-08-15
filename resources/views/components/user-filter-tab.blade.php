@@ -1,8 +1,8 @@
 <div class="my-2 d-flex justify-end">
-    <div class="w-25">
+    <div class="sm:3/4 md:w-1/2 lg:w-1/4">
         <form>
             <div class="d-flex items-center">
-                <div class="w-25">Fetch:</div>
+                <div class="mr-2">Fetch:</div>
                 <select class="w-75 form-control" name="status" onchange="this.form.submit()">
                     <option {{ $statusName == "" ? 'selected' : '' }}>All</option>
                     <option {{ $statusName == "Active" ? 'selected' : '' }} value="1">Active</option>
