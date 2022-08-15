@@ -1,9 +1,6 @@
 <x-app-layout>
     <div class="sm:w-11/12 md:w-5/6 lg:w-3/4 mx-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-custom-other-message-info title="Success" color="teal"
-                message="Yes" />
-
             @if (Session::has('message_sent'))
             <x-custom-other-message-info title="Success" color="teal"
                 message="{{ Session::get('message_sent') }}" />
