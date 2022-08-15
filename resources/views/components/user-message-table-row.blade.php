@@ -1,5 +1,5 @@
 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    @if (auth()->user()->isAdmin())
+    @if (loggedInUserIsAdmin())
         <td scope="col" class="py-3 px-6">
             {{ getFullName($firstName, $lastName) }}
         </td>
