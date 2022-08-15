@@ -1,7 +1,7 @@
 <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-800 dark:text-gray-400">
     <tr>
         @if (loggedInUserIsAdmin())
-        <th scope="col" class="py-3 px-6">
+        <th class="py-3 px-6">
             User name
         </th>
     @endif
