@@ -23,9 +23,8 @@
     <div class="font-sans text-gray-900 antialiased">
         <div class="bg-red-100" style="height: 100vh; width:100%; display:flex; justify-content: center; align-items: center">
             <div class="" style="width: 50%;">
-                <x-custom-page-error color="red" title="403 Error" message="You are not authorized"></x-custom-page-error>
+                <x-custom-page-error color="red" title="403 Error" message="{{ $exception->getMessage() }}"></x-custom-page-error>
             </div>
-            
         </div>
     </div>
 </body>

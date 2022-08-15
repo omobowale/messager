@@ -33,6 +33,7 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
         if ($user->is_active == 1) {
             $request->session()->regenerate();
+            session(['is_regular_user' => 'true']);
             return redirect()->intended(RouteServiceProvider::HOME);
         }
         $this->destroy($request, false);

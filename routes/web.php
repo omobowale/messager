@@ -24,16 +24,20 @@ Route::get('/unauthorized', function () {
     return view('permissions.unauthorized');
 });
 
-Route::get('/messages', [MessageController::class, 'index'])->middleware(['auth'])->name('messages');
+Route::middleware('auth')->group(function() {
+    Route::middleware('check_is_regular_user')->group(function () {
+        Route::get('/messages', [MessageController::class, 'index'])->name('messages');
+        Route::post('/messages', [MessageController::class, 'store'])->name('messages');
+    });
 
-Route::get('/admin-messages', [AdminMessageController::class, 'index'])->middleware(['auth', 'check_is_admin'])->name('admin-messages');
+    Route::middleware('check_is_admin')->group(function () {
+        Route::get('/admin-messages', [AdminMessageController::class, 'index'])->name('admin-messages');
+        Route::get('/admin-users', [AdminUserController::class, 'index'])->name('admin-users');
+        Route::put('/admin-activate', [AdminUserController::class, 'activate'])->name('admin-activate');
+        Route::put('/admin-deactivate', [AdminUserController::class, 'deactivate'])->name('admin-deactivate');
+    });
+    
+});
 
-Route::get('/admin-users', [AdminUserController::class, 'index'])->middleware(['auth', 'check_is_admin'])->name('admin-users');
-
-Route::post('/messages', [MessageController::class, 'store'])->middleware(['auth'])->name('messages');
-
-Route::put('/admin-activate', [AdminUserController::class, 'activate'])->middleware(['auth', 'check_is_admin'])->name('admin-activate');
-
-Route::put('/admin-deactivate', [AdminUserController::class, 'deactivate'])->middleware(['auth', 'check_is_admin'])->name('admin-deactivate');
 
 require __DIR__.'/auth.php';
