@@ -3,7 +3,7 @@
         <form>
             <div class="d-flex items-center">
                 <div class="mr-2">Fetch:</div>
-                <select class="w-75 form-control" name="status" onchange="this.form.submit()">
+                <select class="w-100 form-control" name="status" onchange="this.form.submit()">
                     <option {{ $statusName == "" ? 'selected' : '' }}>All</option>
                     <option {{ $statusName == "Active" ? 'selected' : '' }} value="1">Active</option>
                     <option {{ $statusName == "Pending" ? 'selected' : '' }} value="0">Pending</option>

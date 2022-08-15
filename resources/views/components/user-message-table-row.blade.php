@@ -4,7 +4,7 @@
             {{ getFullName($firstName, $lastName) }}
         </td>
     @endif
-    <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <td class="py-4 px-6 whitespace-nowrap">
         {{ $title }}
     </td>
     <td class="py-4 px-6">
