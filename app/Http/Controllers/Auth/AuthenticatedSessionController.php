@@ -31,14 +31,15 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $user = Auth::user();
+        $isAdmin = loggedInUserIsAdmin();
         if ($user->is_active == 1) {
             $request->session()->regenerate();
             session(['is_regular_user' => 'true']);
             return redirect()->intended(RouteServiceProvider::HOME);
         }
         $this->destroy($request, false);
-        flashRegistrationMessage($user->first_name . " " . $user->last_name, false);
-        if(loggedInUserIsAdmin()){
+        flashRegistrationMessage(getFullName($user->first_name, $user->last_name), false);
+        if($isAdmin){
             return redirect()->to('/admin-login');
         }
         return redirect()->to('/login');
@@ -52,13 +53,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request, $redirect = true)
     {
+        $isAdmin = loggedInUserIsAdmin();
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
         if($redirect){
-            if(loggedInUserIsAdmin()){
+            if($isAdmin){
                 return redirect()->to('/admin-login');
             }
             return redirect('/');

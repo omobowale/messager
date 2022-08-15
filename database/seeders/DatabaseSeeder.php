@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'User',
             'last_name' => 'One',
             'email' => 'test@example.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('p@55sw0rd1'),
             'phone_number' => '08055429961',
             'is_admin' => 0,
             'is_active' => 0,
@@ -29,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'User',
             'last_name' => 'Two',
             'email' => 'test2@example.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('p@55sw0rd2'),
             'phone_number' => '08139453125',
             'is_admin' => 0,
             'is_active' => 1,
@@ -38,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Test',
             'last_name' => 'Admin',
             'email' => 'admin@example.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('p@55sw0rd0'),
             'phone_number' => '08064402809',
             'is_admin' => 1,
             'is_active' => 1,

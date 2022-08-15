@@ -1,10 +1,9 @@
-<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-800 dark:text-gray-400">
     <tr>
-       
         @if (loggedInUserIsAdmin())
-        <td scope="col" class="py-3 px-6">
+        <th scope="col" class="py-3 px-6">
             User name
-        </td>
+        </th>
     @endif
         <th scope="col" class="py-3 px-6">
             {{ $col1 }}
