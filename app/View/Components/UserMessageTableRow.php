@@ -7,7 +7,8 @@ use Illuminate\View\Component;
 class UserMessageTableRow extends Component
 {
     public $id;
-    public $username;
+    public $firstName;
+    public $lastName;
     public $title;
     public $content;
     public $dateAndTime;
@@ -16,10 +17,11 @@ class UserMessageTableRow extends Component
      *
      * @return void
      */
-    public function __construct($id, $username,$title, $content, $dateAndTime)
+    public function __construct($id, $firstName, $lastName, $title, $content, $dateAndTime)
     {
         $this->id = $id;
-        $this->username = $username;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
         $this->title = $title;
         $this->content = $content;
         $this->dateAndTime = $dateAndTime;
@@ -34,4 +36,5 @@ class UserMessageTableRow extends Component
     {
         return view('components.user-message-table-row');
     }
+
 }

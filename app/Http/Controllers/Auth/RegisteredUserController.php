@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        flashRegistrationMessage($user->first_name + " " + $user->last_name, true);
+        flashRegistrationMessage($user->first_name . " " . $user->last_name, true);
 
         return redirect('/login');
 

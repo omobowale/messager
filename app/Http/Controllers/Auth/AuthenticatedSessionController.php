@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(RouteServiceProvider::HOME);
         }
         $this->destroy($request, false);
-        flashRegistrationMessage($user->first_name + " " + $user->last_name, false);
+        flashRegistrationMessage($user->first_name . " " . $user->last_name, false);
 
         return redirect()->to('/login');
     }

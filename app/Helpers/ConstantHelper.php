@@ -20,3 +20,7 @@ function getStatusName($value) {
     }
     return '';
 }
+
+function getFullName($firstname, $lastname){
+    return $firstname . " " . $lastname;
+}

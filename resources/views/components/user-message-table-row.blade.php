@@ -1,7 +1,7 @@
 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
     @if (auth()->user()->isAdmin())
         <td scope="col" class="py-3 px-6">
-            {{ $username }}
+            {{ getFullName($firstName, $lastName) }}
         </td>
     @endif
     <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">

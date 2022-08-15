@@ -48,7 +48,7 @@ class AdminAuthenticatedSessionController extends Controller
         }
        
         $this->destroy($request);
-        flashCustomMessage($user->name);
+        flashCustomMessage($user->first_name . " " . $user->last_name);
         return redirect()->to('/admin-login');
     }
 

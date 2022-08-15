@@ -32,4 +32,6 @@ class UserMessageTableBody extends Component
     public function convertString($str){
         return Str::limit($str, $limit = 50, $end = '...');
     }
+
+  
 }

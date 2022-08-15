@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(3)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Test User 1',
+            'first_name' => 'User',
+            'last_name' => 'One',
             'email' => 'test@example.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone_number' => '08055429961',
@@ -25,7 +26,8 @@ class DatabaseSeeder extends Seeder
             'is_active' => 0,
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Test User 2',
+            'first_name' => 'User',
+            'last_name' => 'Two',
             'email' => 'test2@example.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone_number' => '08139453125',
@@ -33,7 +35,8 @@ class DatabaseSeeder extends Seeder
             'is_active' => 1,
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Test Admin',
+            'first_name' => 'Test',
+            'last_name' => 'Admin',
             'email' => 'admin@example.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone_number' => '08064402809',
