@@ -15,3 +15,8 @@ function flashCustomMessage($username){
     session()->flash('admin_login_error_message', "You are likely not an admin.");
     session()->flash('user_name', $username);
 }
+
+function flashIsAdminMessage(){
+    session()->flash('user_is_admin', "You are logged in as a regular user.");
+    
+}

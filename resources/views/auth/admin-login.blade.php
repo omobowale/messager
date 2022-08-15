@@ -4,8 +4,10 @@
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
+            <x-welcome-message message="Welcome"></x-welcome-message>
         </x-slot>
-        <h1 class="my-5 text-center">Login as admin</h1>
+        
+        <x-form-title title="Login as Admin"></x-form-title>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 

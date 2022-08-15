@@ -1,14 +1,18 @@
 <x-app-layout>
     <div class="sm:w-11/12 md:w-5/6 lg:w-3/4 mx-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if (Session::has('message_sent'))
+            <x-custom-other-message-info title="Success" color="teal"
+                message="{{ Session::get('message_sent') }}" />
+            @endif
+            @if (Session::has('user_is_admin'))
+            <x-custom-other-message-info title="Success" color="teal"
+                message="{{ Session::get('user_is_admin') }}" />
+            @endif
+        </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="px-4 mx-auto mt-1 w-6/12" style="">
-                        @if (Session::has('message_sent'))
-                        <x-custom-other-message-info title="Success" color="teal"
-                            message="{{ Session::get('message_sent') }}" />
-                        @endif
-                    </div>
                     <div>
                         <x-user-message-new />
                     </div>

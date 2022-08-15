@@ -31,17 +31,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $user = Auth::user();
-        $isAdmin = loggedInUserIsAdmin();
         if ($user->is_active == 1) {
             $request->session()->regenerate();
             session(['is_regular_user' => 'true']);
+            if($user->is_admin == 1){
+                flashIsAdminMessage();
+            }
             return redirect()->intended(RouteServiceProvider::HOME);
         }
         $this->destroy($request, false);
         flashRegistrationMessage(getFullName($user->first_name, $user->last_name), false);
-        if($isAdmin){
-            return redirect()->to('/admin-login');
-        }
+        
         return redirect()->to('/login');
     }
 

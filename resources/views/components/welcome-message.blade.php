@@ -1,0 +1,1 @@
+<h1 class="mt-5 mb-2 font-bold text-lg text-center">{{ $message }}</h1>

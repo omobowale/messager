@@ -1,0 +1,1 @@
+<h3 class="mb-1 font-semibold text-center">{{ $title }}</h3>
