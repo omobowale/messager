@@ -4,9 +4,9 @@
             <div class="bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="px-4 mx-auto mt-1 w-6/12" style="">
+                        @if (Session::has('message_sent'))
                         <x-custom-other-message-info title="Success" color="teal"
                             message="{{ Session::get('message_sent') }}" />
-                        @if (Session::has('message_sent'))
                         @endif
                     </div>
                     <div>
