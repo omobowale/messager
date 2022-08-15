@@ -1,5 +1,6 @@
-<div class="bg-{{ $color }}-50 alert alert-dismissible fade show border-t-4 border-{{ $color }}-300 rounded-b text-{{ $color }}-900 px-4 py-2 mb-1"
-    role="alert">
+<div class="{{ $color == 'teal' ? 'bg-teal-100 border-teal-300 text-teal-900' : 'bg-red-100 border-red-300 text-red-900' }} alert alert-dismissible fade show border-t-4 border-{{ $color }}-300 rounded-b text-{{ $color }}-900 px-4 py-2 mb-1"
+role="alert">
+
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
