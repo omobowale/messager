@@ -16,10 +16,11 @@ class CheckIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->is_admin == 1){
+        if(loggedInUserIsAdmin()){
             return $next($request);
-        } else {
-
+        } else if(auth()->user()->is_admin == 1) {
+            abort(403, 'Please log in as admin to view this page');
+        } else{
             abort(403, 'You are not authorized');
         }
     }
