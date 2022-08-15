@@ -14,8 +14,8 @@
         <small>{{ $dateAndTime }}</small>
     </td>
     <td class="py-4 px-6 text-right">
-        <i data-toggle="modal" style="cursor: pointer;" title="View message details" data-target="#messageInfoModal{{ $id }}" class="fa-solid fa-eye text-info"
-            style="opacity: 1"></i>
+        <i data-toggle="modal" style="cursor: pointer;" title="View message details"
+            data-target="#messageInfoModal{{ $id }}" class="fa-solid fa-eye text-info" style="opacity: 1"></i>
     </td>
 </tr>
 <div class="modal" id="messageInfoModal{{ $id }}" tabindex="-1" role="dialog" aria-
@@ -30,6 +30,16 @@
             </div>
             <div class="modal-body">
                 <div>
+                    @if (loggedInUserIsAdmin())
+                        <div class="font-bold mb-1 d-flex gap-2 border" style="align-items: center">
+                            <div class="bg-dark px-3 py-2 text-center" style="width: 50px">
+                                <i class="fa-solid fa-user text-white" style="opacity: 1"></i>
+                            </div>
+                            <div class="bg-white">
+                                {{ getFullName($firstName, $lastName) }}
+                            </div>
+                        </div>
+                    @endif
                     <div class="font-bold mb-1 d-flex gap-2 border" style="align-items: center">
                         <div class="bg-dark px-3 py-2 text-center" style="width: 50px">
                             <i class="fa-solid fa-anchor text-white" style="opacity: 1"></i>
