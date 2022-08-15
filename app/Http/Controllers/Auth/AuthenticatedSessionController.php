@@ -38,7 +38,9 @@ class AuthenticatedSessionController extends Controller
         }
         $this->destroy($request, false);
         flashRegistrationMessage($user->first_name . " " . $user->last_name, false);
-
+        if(loggedInUserIsAdmin()){
+            return redirect()->to('/admin-login');
+        }
         return redirect()->to('/login');
     }
 
@@ -56,6 +58,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
         if($redirect){
+            if(loggedInUserIsAdmin()){
+                return redirect()->to('/admin-login');
+            }
             return redirect('/');
         }
     }
