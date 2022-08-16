@@ -12,7 +12,7 @@
         <span class="bg-{{ $color }} px-2 py-1 rounded-full text-sm text-white" style="font-size: 10px; opacity:0.6">{{ $status }}</span>
     </td>
     <td class="py-4 px-6 text-right">
-        <i data-toggle="modal" style="cursor: pointer;" title="Toggle user status" data-target="#userInfoModal{{ $id }}" class="fa-solid fa-toggle-{{ $isActive ? 'on' : 'off' }} text-{{ $isActive ? 'info' : 'warning' }}"
+        <i data-toggle="modal" style="cursor: pointer;" title="Toggle user status" data-target="#userInfoModal{{ $id }}" class="fa-solid fa-toggle-{{ $isActive ? 'on' : 'off' }} text-{{ $isActive ? 'success' : 'warning' }}"
             style="opacity: 1"></i>
     </td>
 </tr>
