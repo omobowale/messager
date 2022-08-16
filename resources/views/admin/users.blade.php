@@ -14,7 +14,7 @@
             <div class="bg-white overflow-hidden">
                 <div class="px-6 bg-white border-b border-gray-200">
                     <x-user-filter-tab status-name="{{ $status_name }}" />
-                    <div class="overflow-x-auto relative  py-3">
+                    <div class="overflow-x-auto relative py-3">
                         <div class="border">
                             <table class="table-auto w-100 text-sm text-left text-gray-800 dark:text-gray-700">
                                 <x-user-table-header col1="Full Name" col2="Phone Number" col3="Email" col4="Status"
