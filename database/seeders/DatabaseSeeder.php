@@ -76,6 +76,6 @@ class DatabaseSeeder extends Seeder
         
 
         
-        Task::factory()->count(12)->create();
+        // Task::factory()->count(12)->create();
     }
 }
