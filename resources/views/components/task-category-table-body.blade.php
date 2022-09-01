@@ -111,7 +111,7 @@
             })
             $(".fa-trash").click(function() {
                 $("#categoryDeleteModal").show()
-                var id = $(this).parent().parent().find("td:nth-child(1)").text()
+                var id = $(this).parent().parent().find("td:nth-child(1)").attr("data-id");
                 $("#categoryDeleteModal").find("form").attr("action", `/admin-categories/${id.trim()}`)
             })
             $(".close").click(function(){
