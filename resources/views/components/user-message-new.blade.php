@@ -2,13 +2,13 @@
     <i class="fa-solid fa-2x fa-circle-plus text-info" style="cursor: pointer" title="Write new message" data-target="#newMessageModal" data-toggle="modal"></i>
 </div>
 
-<div class="modal" id="newMessageModal" tabindex="-1" role="dialog" aria- labelledby="newMessageModalLabel"
+<div class="modal" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="newMessageModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-center font-italic" id="newMessageModalLabel">Write New Message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria- label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

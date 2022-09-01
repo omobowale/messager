@@ -12,8 +12,7 @@
                             </table>
                             @if ($messages->count() == 0)
                                 <p class="alert mt-20 alert-info text-center"><i class="fa-solid fa-warning"></i> There
-                                    are
-                                    no messages yet!</p>
+                                    are no messages yet!</p>
                             @endif
                         </div>
                     </div>

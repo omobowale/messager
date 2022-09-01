@@ -24,12 +24,12 @@ class AdminUserController extends Controller
 
     public function activate(Request $request){
         $this->toggle($request, 1, "Activation successful");
-        return redirect('admin-users');
+        return redirect()->back();
     }
 
     public function deactivate(Request $request){
         $this->toggle($request, 0, "Deactivation successful");
-        return redirect('admin-users');
+        return redirect()->back();
     }
 
     public function toggle(Request $request, $value, $message){

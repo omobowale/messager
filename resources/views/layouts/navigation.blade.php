@@ -10,6 +10,12 @@
                     </a>
                 </div>
                 <!-- Navigation Links -->
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
                 @if (loggedInUserIsAdmin())
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('admin-messages')" :active="request()->routeIs('admin-messages')">
@@ -21,10 +27,25 @@
                             {{ __('All Users') }}
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('admin-tasks')" :active="request()->routeIs('admin-tasks')">
+                            {{ __('All Tasks') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('admin-categories')" :active="request()->routeIs('admin-categories')">
+                            {{ __('Categories') }}
+                        </x-nav-link>
+                    </div>
                 @else
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('messages')" :active="request()->routeIs('messages')">
                             {{ __('Your Messages') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
+                            {{ __('Your Tasks') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -37,7 +58,7 @@
                     <x-slot name="trigger">
                         <button
                             class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->first_name . " " . Auth::user()->last_name }}</div>
+                            <div>{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -85,6 +106,9 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
             @if (loggedInUserIsAdmin())
                 <x-responsive-nav-link :href="route('admin-messages')" :active="request()->routeIs('admin-messages')">
                     {{ __('All Messages') }}
@@ -92,9 +116,18 @@
                 <x-responsive-nav-link :href="route('admin-users')" :active="request()->routeIs('admin-users')">
                     {{ __('All Users') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin-tasks')" :active="request()->routeIs('admin-tasks')">
+                    {{ __('All Tasks') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin-categories')" :active="request()->routeIs('admin-categories')">
+                    {{ __('Categories') }}
+                </x-responsive-nav-link>
             @else
                 <x-responsive-nav-link :href="route('messages')" :active="request()->routeIs('messages')">
                     {{ __('Your Messages') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
+                    {{ __('Your Tasks') }}
                 </x-responsive-nav-link>
             @endif
         </div>

@@ -4,10 +4,6 @@
             @if (Session::has('message_sent'))
                 <x-custom-other-message-info title="Success" color="teal" message="{{ Session::get('message_sent') }}" />
             @endif
-            @if (Session::has('user_is_admin'))
-                <x-custom-other-message-info title="Success" color="teal"
-                    message="{{ Session::get('user_is_admin') }}" />
-            @endif
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden">
