@@ -7,19 +7,36 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\TaskCategory;
 use App\Models\TaskStatus;
+use DateTime;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+
     public function index() {
-        $tasks = Task::all();
+        $this->changeAllDueTasksToOverdue();
+        if(loggedInUserIsAdmin()){
+            $tasks = Task::all();
+        }else {
+            $user = auth()->user();
+            $tasks = $user->tasks;
+        }
         $categories = TaskCategory::all()->where('status', true);
         $statuses = TaskStatus::all();
         return view("user/tasks")->with(["tasks" => $tasks, "categories" => $categories, "statuses" => $statuses]);
     }
 
+    public function changeAllDueTasksToOverdue(){
+        $now = new DateTime();
+        $status = $this->getOverdueStatus();
+        if($status >= 0){
+            Task::where("deadline", "<", $now)->update(['status_id' => $status]);
+        }
+    }
+
     public function store(Request $request){
         $user_id = Auth::user()->id;
+        
         
         $request->validate([
             'title' => ['required', 'string', 'min:2'],
@@ -31,16 +48,51 @@ class TaskController extends Controller
             'status.numeric' => 'Please select a valid status'
         ]);
 
+        $status = $this->getStatusAndMessage($request)[0];
+        $additional_message = $this->getStatusAndMessage($request)[1];
 
         $task = Task::create([
             'title' => $request->title,
             'category_id' => $request->category,
-            'status_id' => $request->status,
+            'status_id' => $status,
             'deadline' => $request->deadline,
             'user_id' => $user_id
         ]);
 
-        return redirect()->back()->with('task_created', 'Task successfully created');
+        return redirect()->back()->with('task_created', "Task successfully created. $additional_message");
+    }
+
+    public function getStatusAndMessage($request){
+        $additional_message = "";
+
+        $deadline = new DateTime($request->deadline);
+        $current_date = new DateTime();
+
+        if ($deadline < $current_date)
+        {
+            $status = TaskStatus::where("name", 'like', "%" . "DUE". "%")->get();
+            if(count($status) > 0){
+                $status = $status[0]->id;
+                $additional_message = "Deadline is passed and status has been changed to overdue";
+            }
+            else {
+                $status = $request->status;
+            }
+        } else {
+            $status = $request->status;
+        }
+
+        return [$status, $additional_message];
+    }
+
+    public function getOverdueStatus() {
+        $status = TaskStatus::where("name", 'like', "%" . "DUE". "%")->get();
+        if(count($status) > 0){
+            $status = $status[0]->id;
+        }else {
+            $status = -1;
+        }
+        return $status;
     }
 
     public function update(Request $request, $id){
@@ -56,17 +108,19 @@ class TaskController extends Controller
             'status.numeric' => 'Please select a valid status'
         ]);
 
+        $status = $this->getStatusAndMessage($request)[0];
+        $additional_message = $this->getStatusAndMessage($request)[1];
 
         $task = Task::find($id);
         $task->title = $request->title;
         $task->category_id = $request->category;
-        $task->status_id = $request->status;
+        $task->status_id = $status;
         $task->deadline = $request->deadline;
         $task->user_id = $user_id;
 
         $task->save();
 
-        return redirect()->back()->with('task_created', 'Task successfully updated');
+        return redirect()->back()->with('task_created', 'Task successfully updated. ' . $additional_message);
     }
 
 
