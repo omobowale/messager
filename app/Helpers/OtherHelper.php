@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Task;
+use App\Models\TaskStatus;
 use Illuminate\Support\Facades\Session;
 
 function loggedInUserIsAdmin(){
@@ -11,4 +14,21 @@ function loggedInUserIsAdmin(){
 function loggedInUserAsRegularUser(){
     $res = Session::has('is_regular_user');
     return $res;
+}
+
+function changeAllDueTasksToOverdue(){
+    $now = new DateTime();
+    $status = getOverdueStatus();
+    if($status >= 0){
+        Task::where("deadline", "<", $now)->update(['status_id' => $status]);
+    }
+}
+function getOverdueStatus() {
+    $status = TaskStatus::where("name", 'like', "%" . "DUE". "%")->get();
+    if(count($status) > 0){
+        $status = $status[0]->id;
+    }else {
+        $status = -1;
+    }
+    return $status;
 }

@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
 
     public function index() {
-        $this->changeAllDueTasksToOverdue();
+        changeAllDueTasksToOverdue();
         if(loggedInUserIsAdmin()){
             $tasks = Task::all();
         }else {
@@ -24,14 +24,6 @@ class TaskController extends Controller
         $categories = TaskCategory::all()->where('status', true);
         $statuses = TaskStatus::all();
         return view("user/tasks")->with(["tasks" => $tasks, "categories" => $categories, "statuses" => $statuses]);
-    }
-
-    public function changeAllDueTasksToOverdue(){
-        $now = new DateTime();
-        $status = $this->getOverdueStatus();
-        if($status >= 0){
-            Task::where("deadline", "<", $now)->update(['status_id' => $status]);
-        }
     }
 
     public function store(Request $request){
@@ -85,15 +77,6 @@ class TaskController extends Controller
         return [$status, $additional_message];
     }
 
-    public function getOverdueStatus() {
-        $status = TaskStatus::where("name", 'like', "%" . "DUE". "%")->get();
-        if(count($status) > 0){
-            $status = $status[0]->id;
-        }else {
-            $status = -1;
-        }
-        return $status;
-    }
 
     public function update(Request $request, $id){
         $user_id = Auth::user()->id;

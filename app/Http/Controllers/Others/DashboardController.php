@@ -16,6 +16,7 @@ class DashboardController extends Controller
     public $taskLimit = 5;
 
     public function index() {
+        changeAllDueTasksToOverdue();
         $users = User::all();
         if(loggedInUserIsAdmin()){
             $tasks = Task::all();
