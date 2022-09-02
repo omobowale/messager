@@ -21,7 +21,7 @@
             {{ $col5 }}
         </th>
 
-        @if(!loggedInUserIsAdmin())
+        
             <th scope="col" class="py-3 px-6">
                 <span class="sr-only">{{ $iconLabel1 }}</span>
             </th>
@@ -29,6 +29,6 @@
             <th scope="col" class="py-3 px-6">
                 <span class="sr-only">{{ $iconLabel2 }}</span>
             </th>
-        @endif
+        
     </tr>
 </thead>

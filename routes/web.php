@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function() {
 
     Route::middleware('check_is_admin')->group(function () {
         Route::get('/admin-messages', [AdminMessageController::class, 'index'])->name('admin-messages');
+        Route::put('/tasks/{id}', [TaskController::class, 'update']);
+        Route::delete('/tasks/{id}', [TaskController::class, 'delete']);
         Route::get('/admin-users', [AdminUserController::class, 'index'])->name('admin-users');
         Route::put('/admin-activate', [AdminUserController::class, 'activate'])->name('admin-activate');
         Route::put('/admin-deactivate', [AdminUserController::class, 'deactivate'])->name('admin-deactivate');
