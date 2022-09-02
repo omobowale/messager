@@ -44,7 +44,7 @@ class AdminAuthenticatedSessionController extends Controller
         if($user->is_admin == 1 && $user->is_active == 1){
             $request->session()->regenerate();
             session(['is_admin' => 'true']);
-            return redirect()->to('/admin-messages');
+            return redirect()->to('/dashboard');
         }
        
         $this->destroy($request);

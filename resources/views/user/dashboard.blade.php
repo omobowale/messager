@@ -34,16 +34,18 @@
                                 </table>
                                 @if ($fewTasks !== null && $fewTasks->count() == 0)
                                     <p class="alert mt-20 alert-info text-center"><i class="fa-solid fa-warning"></i>
-                                        You
-                                        have not created no tasks yet! Go to the <a style="text-decoration: underline"
-                                            href="/tasks">tasks page</a> to create a new one</p>
+                                        There are no tasks yet! 
+                                        @if(!loggedInUserIsAdmin())
+                                            <span>Go to the <a style="text-decoration: underline"
+                                                href="/tasks">tasks page</a> to create a new one</span>
+                                        @endif
+                                    </p>
                                 @endif
                             </div>
                         </div>
                     </div>
 
                     @if (loggedInUserIsAdmin())
-
                         <div>
                             <div class="mt-4 text-xl">
                                 <p class=" bg-dark p-2 text-white rounded-t-md">Recent Users</p>
